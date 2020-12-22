@@ -1,0 +1,46 @@
+<project name="lab_02" default = "build" >
+    <property name = "server"
+              value = "/var/lib/tomcat9/" />
+    <property name = "project"
+              value = "./" />
+    <property name = "libs"
+              value = "./lib" />
+
+    <path id="build-classpath">
+        <fileset dir="${libs}">
+            <include name="*.jar"/>
+        </fileset>
+        <pathelement path= "${project}build"/>
+    </path>
+
+    <target name="init">
+        <echo message="build lab_02" />
+    </target>
+    <target name="compile" depends ="init">
+        <mkdir dir= "${project}build" />
+        <javac srcdir = "${project}src"
+               destdir = "${project}build"
+               classpath = "${server}lib/servlet-api.jar"
+               classpathref="build-classpath"
+               includeantruntime="false"/>
+    </target>
+    <target name="create" depends ="compile">
+        <delete dir= "${server}webapps/lab_02/" />
+        <mkdir dir= "${server}webapps/lab_02/" />
+        <mkdir dir= "${server}webapps/lab_02/WEB-INF" />
+        <mkdir dir= "${server}webapps/lab_02/WEB-INF/classes" />
+        <mkdir dir= "${server}webapps/lab_02/scripts" />
+    </target>
+    <target name="build" depends ="create">
+        <copy file= "${project}web/WEB-INF/web.xml"
+              todir="${server}webapps/lab_02/WEB-INF/" />
+        <copy file= "${project}web/index.html"
+              todir="${server}webapps/lab_02/" />
+        <copy file = "${project}web/scripts/jquery-3.2.1.js"
+              todir="${server}webapps/lab_02/scripts" />
+        <copy todir="${server}webapps/lab_02/WEB-INF/classes">
+            <fileset dir="${project}build"/>
+        </copy>
+        <delete dir= "${project}build" />
+    </target>
+</project>

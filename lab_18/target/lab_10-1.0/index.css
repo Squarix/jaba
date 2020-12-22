@@ -1,0 +1,61 @@
+.post {
+    margin: 15px;
+}
+
+.tag {
+    padding: 5px 10px 5px 0;
+    cursor: pointer;
+}
+
+.like {
+    color: limegreen;
+}
+
+.dislike {
+    color: darkred;
+}
+
+.like, .dislike {
+    padding: 0 5px;
+}
+
+.new-post {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+}
+
+.post-header {
+    margin: 10px 0;
+}
+
+.new-post button {
+    max-width: 100px;
+}
+
+.new-post .input {
+    padding: 5px 0;
+    margin: 10px 0;
+}
+
+.comment {
+    margin: 5px 0;
+    border: 1px solid gray;
+    border-radius: 7px;
+    padding: 5px 10px;
+}
+
+.comment-container {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}
+
+.comment-container button {
+    width: 100px;
+    margin-top: 10px;
+}
+
+.comment-container textarea {
+    margin: 10px 0;
+}

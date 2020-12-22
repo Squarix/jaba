@@ -1,0 +1,34 @@
+<project name="Lab13" default="copy">
+    <target name="init">
+        <echo message="Build Lab13"/>
+        <property name="server"
+                  value="F:\jetty\demo-base\"/>
+        <property name="work"
+                  value="D:\7sem\Java\lab17\lab17\"/>
+    </target>
+    <target name="compile" depends="init">
+        <javac srcdir="${work}/src" destdir="${work}/build">
+            <classpath>
+                <fileset dir="${work}/WEB-INF/lib"/>
+            </classpath>
+        </javac>
+    </target>
+    <target name="create" depends="compile">
+        <delete dir="${server}webapps/Lab17/"/>
+        <mkdir dir="${server}webapps/Lab17/"/>
+        <mkdir dir="${server}webapps/Lab17/WEB-INF"/>
+    </target>
+    <target name="copy" depends="compile">
+        <copy file="${work}WEB-INF/web.xml"
+                todir="${server}webapps/Lab17/WEB-INF/"/>
+        <copy todir="${server}webapps/Lab17">
+                <fileset dir="${work}/jsp"/>
+        </copy>
+        <copy todir="${server}webapps/Lab17/WEB-INF/classes">
+            <fileset dir="${work}/build"/>
+        </copy>
+        <copy todir="${server}/webapps/Lab17/WEB-INF/lib">
+            <fileset dir="${work}/WEB-INF/lib"/>
+        </copy>
+    </target>
+</project>
