@@ -27,3 +27,4 @@
 * Lab 15 - Mail Sender (SMTP & POP3)
 * Lab 16 - Web Sockets (Endpoints)
 * Lab 17 - Jetty - Deployment of app(s) from prev labs on this Server
+* Lab 18 - Запупа с сервлетами комментариями, постами и лукасами
